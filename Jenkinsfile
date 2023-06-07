@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Pull and run') {
             steps {
-                sh "sudo ssh -i /home/azureuser/.ssh/VMJenk_key.pem azureuser@51.103.46.201"
+                sh "sudo ssh -T -i /home/azureuser/.ssh/VMJenk_key.pem azureuser@51.103.46.201"
                 sh "sudo docker run -d -p 80:80 -h apptestjkb nevii/apptestjk:latest"
             }
         }
