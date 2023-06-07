@@ -38,9 +38,7 @@ pipeline {
         }
         stage('Pull and run') {
             steps {
-                sh "sudo apt-get install sshpass"
-                sh "sshpass -p @Azurev69007 ssh azureuser@51.103.46.201"
-                sh "sudo docker run -d -p 80:80 -h apptestjkb nevii/apptestjk:latest"
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'VMJenk', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'bash tpjenkscript.sh', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '/home/azureuser/tpjenkscript.sh')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
     }
