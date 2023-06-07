@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Pull and run') {
             steps {
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'VMJenk', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'bash tpjenkscript.sh', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '/home/azureuser/tpjenkscript.sh')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'VMJenk', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'bash /home/azureuser/tpjenkscript.sh', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/azureuser', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '/home/azureuser/tpjenkscript.sh')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
             }
         }
     }
