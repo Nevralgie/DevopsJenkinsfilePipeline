@@ -20,7 +20,7 @@ pipeline {
 
 
                 // Run Maven on a Unix agent.
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                // sh "mvn -Dmaven.test.failure.ignore=true clean package"
                 sh "docker build -t apptestjk ."
 
                 // To run Maven on a Windows agent, use
