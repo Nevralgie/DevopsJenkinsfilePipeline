@@ -3,14 +3,14 @@ pipeline {
 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
-        maven "Maven"
-        // tool name: 'Maven', type: 'maven'
+        maven "M3"
+        //tool name: 'Maven', type: 'maven'
     }
     
     stages {
         stage('Checkout') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Nevralgie/DevopsJenkinsfilePipeline.git']])
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Nevralgie/DevopsJenkinsfilePipeline.git']])
 
             }
         }
@@ -27,7 +27,8 @@ pipeline {
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
 
-           
+            
+        }
         stage('Push') {
             steps {
                 sh "docker login -u nevii --password dckr_pat_ZaOkL3fPhwN_iSvimZ8YAxjTwvk"
@@ -37,4 +38,4 @@ pipeline {
         }
     }
 }
-}
+
