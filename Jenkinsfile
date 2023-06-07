@@ -38,7 +38,8 @@ pipeline {
         }
         stage('Pull and run') {
             steps {
-                sh "sudo ssh -T azureuser@51.103.46.201"
+                sh "sudo apt-get install sshpass"
+                sh "sshpass -p @Azurev69007 ssh azureuser@51.103.46.201"
                 sh "sudo docker run -d -p 80:80 -h apptestjkb nevii/apptestjk:latest"
             }
         }
