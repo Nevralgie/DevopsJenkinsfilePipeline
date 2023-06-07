@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Pull and run') {
             steps {
-              sshPublisher(publishers: [sshPublisherDesc(configName: 'VMJenk', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'apt install docker.io && docker run -d -p 80:80 -h apptestjkb nevii/apptestjk:latest', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
+              sshPublisher(publishers: [sshPublisherDesc(configName: 'VMJenk', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'sudo docker run -d -p 80:80 -h apptestjkb nevii/apptestjk:latest', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
             }
         }
     }
