@@ -36,6 +36,12 @@ pipeline {
                 sh "docker image push nevii/apptestjk:latest"
             }
         }
+        stage('Pull and run') {
+            steps {
+                sh "ssh azureuser@51.103.46.201"
+                sh "sudo docker run -d -p 80:80 -h apptestjkb nevii/apptestjk:latest"
+            }
+        }
     }
 }
 
