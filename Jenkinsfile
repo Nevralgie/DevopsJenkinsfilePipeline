@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Push') {
             steps {
-                sh "docker login -u nevii --password dckr_pat_ZaOkL3fPhwN_iSvimZ8YAxjTwvk"
+                sh "docker login -u nevii --password <docker-auth-token>"
                 sh "docker image tag apptestjk:latest nevii/apptestjk:latest"
                 sh "docker image push nevii/apptestjk:latest"
             }
